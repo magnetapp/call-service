@@ -1,0 +1,28 @@
+# Libs
+
+node_modules/
+
+# IDE
+
+.vscode/
+typings/
+
+npm-debug.log
+
+# Ignore transpiled typescript files
+App.js
+App.js.map
+services/*.js
+services/*.js.map
+server/*.js
+server/*.js.map
+queue/*.js
+queue/*.js.map
+queue/**/*.js
+queue/**/*.js.map
+data/*.js
+data/*.js.map
+models/*.js
+models/*.js.map
+config/*.js
+config/*.js.map
