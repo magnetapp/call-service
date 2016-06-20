@@ -1,8 +1,8 @@
 // Triage.js
 // A Worker factory
 
-import {Task, ITask, TASK_TYPE} from './Task';
-import {Worker} from './Worker';
+import { Task, ITask, TASK_TYPE } from './Task';
+import { Worker } from './Worker';
 
 export class Triage {
   
@@ -29,6 +29,6 @@ export class Triage {
       })
       .catch((error) => { 
         rejectTask(error);
-      })
+      });
   }
 }

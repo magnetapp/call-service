@@ -10,8 +10,8 @@
  * 
  */
 
-import {Auth}   from './lib/Auth';
-import {StartQueue} from './lib/StartQueue';
+import { Auth }   from './lib/Auth';
+import { StartQueue } from './lib/StartQueue';
 
 export class Queue {
   
@@ -26,7 +26,10 @@ export class Queue {
   }
   
   start() {
-    Auth.firebase(this.url, this.pathToKeyFile).then(($firebaseInstance: any) => StartQueue($firebaseInstance, this.queuePath))
+    Auth.firebase(this.url, this.pathToKeyFile)
+      .then(($firebaseInstance: any) => {
+        return StartQueue($firebaseInstance, this.queuePath)
+      })
       .catch((error: any) => {
         console.error(error);
       });

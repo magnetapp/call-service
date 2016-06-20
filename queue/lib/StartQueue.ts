@@ -7,16 +7,16 @@ var Queue = require('firebase-queue');
 
 export function StartQueue(firebase: any, queuePath: string) {
   
-  var $ref;
+  var $app;
   var queue;
   
   console.log('Starting the Queue');
   
-  $ref = firebase.database().ref(queuePath);
-  queue = new Queue($ref, Triage.task);
-  
+  $app = firebase.database().ref(queuePath);
+  queue = new Queue($app, Triage.task);
+
   if (queue) {
-    console.log(`Queue started, watching for Tasks on ${queuePath}`);  
+    console.log(`Queue started, watching for Tasks on ${queuePath}`);
   }
 
   // Graceful shutdown
