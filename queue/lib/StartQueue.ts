@@ -1,17 +1,18 @@
 // Queue.js
 // Fetch Tasks from the Queue
 
-import {Triage} from './Triage';
+import { Triage } from './Triage';
 
 var Queue = require('firebase-queue');
 
 export function StartQueue(firebase: any, queuePath: string) {
+  
   var $ref;
   var queue;
   
   console.log('Starting the Queue');
   
-  $ref = firebase.child(queuePath);
+  $ref = firebase.database().ref(queuePath);
   queue = new Queue($ref, Triage.task);
   
   if (queue) {

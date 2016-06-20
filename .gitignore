@@ -9,6 +9,9 @@ typings/
 
 npm-debug.log
 
+# Secret stuff
+secrets/
+
 # Ignore transpiled typescript files
 App.js
 App.js.map

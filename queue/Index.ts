@@ -17,16 +17,16 @@ export class Queue {
   
   private url: string;
   private queuePath: string;
-  private token: string;
+  private pathToKeyFile: string;
   
-  constructor(url: string, queuePath: string, token: string) {
+  constructor(url: string, queuePath: string, pathToKeyFile: string) {
     this.url = url;
     this.queuePath = queuePath;
-    this.token = token;
+    this.pathToKeyFile = pathToKeyFile;
   }
   
   start() {
-    Auth.firebase(this.url, this.token).then(($firebaseInstance: any) => StartQueue($firebaseInstance, this.queuePath))
+    Auth.firebase(this.url, this.pathToKeyFile).then(($firebaseInstance: any) => StartQueue($firebaseInstance, this.queuePath))
       .catch((error: any) => {
         console.error(error);
       });

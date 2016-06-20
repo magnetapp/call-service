@@ -23,6 +23,11 @@ export class Config  {
   static FB_TOKEN(): string {
     return process.env.FB_TOKEN || '';
   }
+
+  // Path to the secret key file provided by Firebase
+  static FB_KEY_PATH(): string {
+    return process.env.FB_KEY_PATH || '';
+  }
   
   // The worker queue uses this path to pick up Tasks. 
   // e.g. https://appname.firebaseio.com/path/to/queue/tasks
