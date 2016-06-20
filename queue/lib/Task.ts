@@ -4,7 +4,7 @@
 import Firebase = require('firebase');
 
 export enum TASK_TYPE {
-  GAME
+  CALL
 }
 
 export interface ITask {

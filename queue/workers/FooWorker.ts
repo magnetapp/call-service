@@ -11,11 +11,11 @@ import { IFirebaseService, FirebaseService } from './../services/FirebaseService
 
 export class FooWorker {
   
-  firebase: IFirebaseService;
+  // firebase: IFirebaseService;
 
   constructor(data: any) { 
     // The Firebase Instance
-    this.firebase = new FirebaseService();
+    // this.firebase = new FirebaseService();
   }
 
   // Let's go!!!!

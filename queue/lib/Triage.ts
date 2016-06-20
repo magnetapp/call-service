@@ -9,11 +9,12 @@ export class Triage {
   constructor() { }
 
   static task(task: ITask, progress: any, resolveTask: Function, rejectTask: Function) {
+    
     console.log(`Task recieved (${task.type})`);   
     
     function getWorker(taskType: TASK_TYPE) {
-      if (taskType === TASK_TYPE.GAME) {
-        console.log('Creating a Worker: Game');
+      if (taskType === TASK_TYPE.CALL) {
+        console.log('Creating a Worker: Call');
         return Worker.fooWorker;
       } else {
         throw new Error(`Task ${taskType} does not exist.`)
