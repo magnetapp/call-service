@@ -6,7 +6,7 @@ import { FooWorker } from './../workers/FooWorker';
 
 export class Worker {
   
-  constructor() {}
+  constructor() { }
   
   static fooWorker(task: ITask): Promise<any> {
     return new FooWorker(task.data).go();

@@ -5,8 +5,6 @@
  * 
  */
 
-import { IFirebaseService } from './../services/FirebaseService';
-
 /**
  * IWorker
  * 
@@ -23,6 +21,5 @@ import { IFirebaseService } from './../services/FirebaseService';
  */
 
 export interface IWorker {
-  firebase: IFirebaseService;
   go(): Promise<any>;
 }

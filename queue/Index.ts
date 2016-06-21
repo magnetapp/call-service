@@ -10,7 +10,7 @@
  * 
  */
 
-import { Auth }   from './lib/Auth';
+import { FirebaseService } from './services/FirebaseService';
 import { StartQueue } from './lib/StartQueue';
 
 export class Queue {
@@ -18,15 +18,17 @@ export class Queue {
   private url: string;
   private queuePath: string;
   private pathToKeyFile: string;
-  
+  private $fb: any;
+
   constructor(url: string, queuePath: string, pathToKeyFile: string) {
     this.url = url;
     this.queuePath = queuePath;
     this.pathToKeyFile = pathToKeyFile;
+    this.$fb = new FirebaseService();
   }
   
   start() {
-    Auth.firebase(this.url, this.pathToKeyFile)
+    this.$fb.auth(this.url, this.pathToKeyFile)
       .then(($firebaseInstance: any) => {
         return StartQueue($firebaseInstance, this.queuePath)
       })

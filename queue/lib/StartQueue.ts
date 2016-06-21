@@ -3,12 +3,12 @@
 
 import { Triage } from './Triage';
 
-var Queue = require('firebase-queue');
+const Queue = require('firebase-queue');
 
 export function StartQueue(firebase: any, queuePath: string) {
   
-  var $app;
-  var queue;
+  let $app;
+  let queue;
   
   console.log('Starting the Queue');
   
@@ -20,11 +20,11 @@ export function StartQueue(firebase: any, queuePath: string) {
   }
 
   // Graceful shutdown
-  process.on('SIGINT', function () {
+  process.on('SIGINT',() => {
     
     console.log('Starting queue shutdown');
     
-    queue.shutdown().then(function () {
+    queue.shutdown().then(() => {
       console.log('Finished queue shutdown');
       process.exit(0);
     });

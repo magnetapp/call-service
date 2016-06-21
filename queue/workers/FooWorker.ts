@@ -7,21 +7,28 @@
 
 import { IWorker } from './IWorker'
 import { ITask } from './../lib/Task';
-import { IFirebaseService, FirebaseService } from './../services/FirebaseService';
+import { FirebaseService } from './../services/FirebaseService';
 
 export class FooWorker {
   
-  // firebase: IFirebaseService;
+  $fb: any;
 
   constructor(data: any) { 
     // The Firebase Instance
-    // this.firebase = new FirebaseService();
+    let fbs = new FirebaseService();
+    this.$fb = fbs.get();
   }
 
   // Let's go!!!!
   go(): Promise<any> {
-    return new Promise((resolve) => {
-      resolve();
+    return new Promise((resolve, reject) => {
+      
+      let $db = this.$fb.database()
+      let $ref = $db.ref('test');
+      
+      $ref.set({'foo': 'bar'})
+        .then(resolve)
+        .catch(reject);
     });
   }
 }
