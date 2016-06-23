@@ -40,4 +40,8 @@ export class Config  {
   static FB_QUEUEPATH(): string {
     return '/queue';
   }
+
+  static XIRSYS_SECRET(): string {
+    return process.env.XIRSYS_SECRET || '';
+  }
 }

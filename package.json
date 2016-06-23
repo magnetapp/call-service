@@ -4,7 +4,7 @@
   "description": "A service for Magnet WebRTC-based calls",
   "main": "App.js",
   "scripts": {
-    "start": "npm run tsc && node app",
+    "start": "npm run tsc && node app --debug=5858",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "test": "tsc && mocha \"test/unit/*.js\""

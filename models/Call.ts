@@ -1,7 +1,7 @@
 /**
  * Call.ts
  * 
- * Nothin.
+ * A Call model.
  * 
  */
 

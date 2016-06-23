@@ -15,14 +15,16 @@ export class Triage {
     function getWorker(taskType: TASK_TYPE) {
       if (taskType === TASK_TYPE.CALL) {
         console.log('Creating a Worker: Call');
-        return Worker.fooWorker;
+        return Worker.callWorker;
       } else {
         throw new Error(`Task ${taskType} does not exist.`)
       }
     }
     
+    // Get a Worker from the getWorker factory function above
     var fn = getWorker(task.type);
     
+    // Execute the Worker
     return fn(task)
       .then(() => {
         resolveTask();

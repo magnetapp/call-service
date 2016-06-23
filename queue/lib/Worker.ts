@@ -2,13 +2,13 @@
 // Various Workers to process Tasks
 
 import { ITask } from './Task';
-import { FooWorker } from './../workers/FooWorker';
+import { CallWorker } from './../workers/CallWorker';
 
 export class Worker {
   
   constructor() { }
   
-  static fooWorker(task: ITask): Promise<any> {
-    return new FooWorker(task.data).go();
+  static callWorker(task: ITask): Promise<any> {
+    return new CallWorker(task.data).go();
   }
 }
