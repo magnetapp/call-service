@@ -20,10 +20,7 @@ export class CallWorker {
   // Let's go!!!!
   go(): Promise<any> {
     return this.callService.setup()
-      .then(callInfo => this.callService.make)
-      .then((data) => {
-        console.log('Yeah?', data);
-      })
+      .then(callInfo => this.callService.make(callInfo))
       .catch(err => {
         console.error(err);
       })
