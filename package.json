@@ -1,7 +1,7 @@
 {
-  "name": "signal-service",
+  "name": "call-service",
   "version": "0.0.1",
-  "description": "A Signalling service to Magnet WebRTC",
+  "description": "A service for Magnet WebRTC-based calls",
   "main": "App.js",
   "scripts": {
     "start": "npm run tsc && node app",
