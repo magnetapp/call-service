@@ -17,18 +17,16 @@ export class Queue {
   
   private url: string;
   private queuePath: string;
-  private pathToKeyFile: string;
-  private $fb: any;
+  private fbs: any;
 
-  constructor(url: string, queuePath: string, pathToKeyFile: string) {
+  constructor(url: string, queuePath: string) {
     this.url = url;
     this.queuePath = queuePath;
-    this.pathToKeyFile = pathToKeyFile;
-    this.$fb = new FirebaseService();
+    this.fbs = new FirebaseService();
   }
   
   start() {
-    this.$fb.auth(this.url, this.pathToKeyFile)
+    this.fbs.auth(this.url)
       .then(($firebaseInstance: any) => {
         return StartQueue($firebaseInstance, this.queuePath)
       })

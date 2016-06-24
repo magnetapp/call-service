@@ -11,7 +11,7 @@ export function StartQueue(firebase: any, queuePath: string) {
   let queue;
   
   console.log('Starting the Queue');
-  
+
   $app = firebase.database().ref(queuePath);
   queue = new Queue($app, Triage.task);
 

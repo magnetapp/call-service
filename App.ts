@@ -5,9 +5,9 @@
  * 
  */
 
-import {Queue} from './queue';
-import {Config} from './config';
+import { Queue } from './queue';
+import { Config } from './config';
 
 // Start the Queue
-var queue = new Queue(Config.FB_URL(), Config.FB_QUEUEPATH(), Config.FB_KEY_PATH());
+var queue = new Queue(Config.FB_URL(),  Config.FB_QUEUEPATH());
 queue.start();

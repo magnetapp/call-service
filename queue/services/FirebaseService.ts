@@ -3,6 +3,8 @@
  * 
  */
 
+import { Config } from './../../config';
+
 const firebase = require('firebase');
 
 let $firebaseApp = null;
@@ -11,27 +13,36 @@ export class FirebaseService {
 
   constructor() { }
   
-  auth(firebaseUrl: string, pathToKeyFile: string): Promise<any> {
+  auth(firebaseUrl: string): Promise<any> {
     
     return new Promise((resolve, reject) => {
       
       console.log('Authenticating to Firebase');
       
-      try {
-        // Init firebase app
-        $firebaseApp = firebase.initializeApp({
-          serviceAccount: pathToKeyFile,
-          databaseURL: firebaseUrl
-        });
+      const configuration = {
+        serviceAccount: {
+          "type": "service_account",
+          "project_id": Config.FB_PROJECT_ID(),
+          "private_key_id": Config.FB_PRIVATE_KEY_ID(),
+          "private_key": `-----BEGIN PRIVATE KEY-----\n${Config.FB_PRIVATE_KEY()}\n-----END PRIVATE KEY-----\n`,
+          "client_email": Config.FB_CLIENT_EMAIL(),
+          "client_id": Config.FB_CLIENT_ID(),
+          "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+          "token_uri": "https://accounts.google.com/o/oauth2/token",
+          "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+          "client_x509_cert_url": Config.FB_CLIENT_CERT_URL()
+        },
+        databaseURL: firebaseUrl
+      };
 
-        if ($firebaseApp) {
-          console.log('Succesfully authenticated to ' + firebaseUrl);
-          resolve($firebaseApp);
-        } else {
-          reject('Cannot auth to Firebase');
-        }
-      } catch (ex) {
-        reject(`Cannot auth to Firebase: ${ex}`);
+      // Init firebase app
+      $firebaseApp = firebase.initializeApp(configuration);
+
+      if ($firebaseApp) {
+        console.log('Succesfully authenticated to ' + firebaseUrl);
+        resolve($firebaseApp);
+      } else {
+        reject('Cannot auth to Firebase');
       }
     });
   }

@@ -19,16 +19,6 @@ export class Config  {
     }
   }
   
-  // Your secret Firebase token
-  static FB_TOKEN(): string {
-    return process.env.FB_TOKEN || '';
-  }
-
-  // Path to the secret key file provided by Firebase
-  static FB_KEY_PATH(): string {
-    return process.env.FB_KEY_PATH || '';
-  }
-  
   // The worker queue uses this path to pick up Tasks. 
   // e.g. https://appname.firebaseio.com/path/to/queue/tasks
   static FB_TASKPATH(): string {
@@ -41,7 +31,33 @@ export class Config  {
     return '/queue';
   }
 
+  // Seccret Key provided by Xirsys for STUN/TURN access
   static XIRSYS_SECRET(): string {
     return process.env.XIRSYS_SECRET || '';
+  }
+
+  static FB_PROJECT_ID(): string {
+    return process.env.FB_NAME || '';
+  }
+
+  static FB_CLIENT_EMAIL(): string {
+    return process.env.FB_CLIENT_EMAIL || '';
+  }
+
+  static FB_PRIVATE_KEY(): string {
+    let key = process.env.FB_PRIVATE_KEY;
+    return (key) ? key.replace(/\\n/g, '\n') : '';
+  }
+
+  static FB_PRIVATE_KEY_ID(): string {
+    return process.env.FB_PRIVATE_KEY_ID || '';
+  }
+
+  static FB_CLIENT_ID(): string {
+    return process.env.FB_CLIENT_ID || '';
+  }
+
+  static FB_CLIENT_CERT_URL(): string {
+    return process.env.FB_CLIENT_CERT_URL || '';
   }
 }
